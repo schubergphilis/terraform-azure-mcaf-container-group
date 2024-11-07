@@ -30,5 +30,5 @@ output "resource" {
 
 output "system_assigned_mi_principal_id" {
   description = "The principal ID of the system assigned managed identity"
-  value       = one(azurerm_container_group.this[*].system_assigned_identity[0].principal_id)
+  value       = try(azurerm_container_group.this[*].system_assigned_identity[0].principal_id, null)
 }
