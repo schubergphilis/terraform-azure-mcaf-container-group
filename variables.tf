@@ -29,7 +29,7 @@ variable "container_group" {
     key_vault_user_assigned_identity_id = optional(string)
     dns_name_label                      = optional(string)
     dns_name_label_reuse_policy         = optional(string)
-    role_assignments    = optional(map(object({
+    role_assignments = optional(map(object({
       principal_id = string
       role         = string
     })))

@@ -6,19 +6,19 @@ resource "azurerm_resource_group" "this" {
 }
 
 resource "azurerm_container_group" "this" {
-  name                               = var.container_group.name
-  location                           = var.container_group.location == null ? azurerm_resource_group.this[0].location : var.container_group.location
-  resource_group_name                = var.container_group.resource_group_name == null ? azurerm_resource_group.this[0].name : var.container_group.resource_group_name
-  os_type                            = var.container_group.os_type
-  dns_name_label                     = length(var.container_group.subnet_ids) == 0 ? var.dns_name_label : null
-  dns_name_label_reuse_policy        = var.container_group.dns_name_label_reuse_policy
-  ip_address_type                    = length(var.container_group.subnet_ids) == 0 ? "Public" : "Private"
-  key_vault_key_id                   = var.container_group.key_vault_key_id
+  name                                = var.container_group.name
+  location                            = var.container_group.location == null ? azurerm_resource_group.this[0].location : var.container_group.location
+  resource_group_name                 = var.container_group.resource_group_name == null ? azurerm_resource_group.this[0].name : var.container_group.resource_group_name
+  os_type                             = var.container_group.os_type
+  dns_name_label                      = length(var.container_group.subnet_ids) == 0 ? var.dns_name_label : null
+  dns_name_label_reuse_policy         = var.container_group.dns_name_label_reuse_policy
+  ip_address_type                     = length(var.container_group.subnet_ids) == 0 ? "Public" : "Private"
+  key_vault_key_id                    = var.container_group.key_vault_key_id
   key_vault_user_assigned_identity_id = var.container_group.key_vault_user_assigned_identity_id
-  priority                           = var.container_group.priority
-  restart_policy                     = var.container_group.restart_policy
-  subnet_ids                         = length(var.container_group.subnet_ids) == 0 ? null : var.container_group.subnet_ids
-  zones                              = var.container_group.zones
+  priority                            = var.container_group.priority
+  restart_policy                      = var.container_group.restart_policy
+  subnet_ids                          = length(var.container_group.subnet_ids) == 0 ? null : var.container_group.subnet_ids
+  zones                               = var.container_group.zones
 
   dynamic "container" {
     for_each = var.aci
@@ -88,10 +88,10 @@ resource "azurerm_container_group" "this" {
       dynamic "volume" {
         for_each = container.value.volumes
         content {
-          mount_path = volume.value.mount_path
-          name       = volume.key
-          empty_dir  = try(volume.value.empty_dir, false)
-          read_only  = try(volume.value.read_only, false)
+          mount_path           = volume.value.mount_path
+          name                 = volume.key
+          empty_dir            = try(volume.value.empty_dir, false)
+          read_only            = try(volume.value.read_only, false)
           secret               = try(volume.value.secret, null)
           share_name           = try(volume.value.share_name, null)
           storage_account_key  = try(volume.value.storage_account_key, null)
