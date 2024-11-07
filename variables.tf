@@ -39,7 +39,6 @@ variable "container_group" {
     }), {})
     zones = optional(list(string), [])
   })
-  default = {}
   description = <<ACI_DETAILS
   This object describes the configuration for an Azure Container Instance.
 
@@ -100,7 +99,6 @@ variable "aci" {
     secure_environment_variables = optional(map(string), {})
     commands                     = optional(list(string), null)
   }))
-  default     = {}
   description = <<DESCRIPTION
 
 - `image` = (Required) - The image to use for the container.
