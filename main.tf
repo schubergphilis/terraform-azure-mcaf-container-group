@@ -5,14 +5,6 @@ resource "azurerm_resource_group" "this" {
   location = var.location
 }
 
-resource "azurerm_user_assigned_identity" "this" {
-  count               = local.managed_identities.user_assigned != null ? 1 : 0
-
-  name                = "${var.container_group.name}-mid"
-  location            = var.container_group.location == null ? azurerm_resource_group.this[0].location : var.container_group.location
-  resource_group_name = var.container_group.resource_group_name == null ? azurerm_resource_group.this[0].name : var.container_group.resource_group_name
-}
-
 resource "azurerm_container_group" "this" {
   name                               = var.container_group.name
   location                           = var.container_group.location == null ? azurerm_resource_group.this[0].location : var.container_group.location
