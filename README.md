@@ -1,3 +1,9 @@
+<!-- migrate-repo:banner -->
+> [!IMPORTANT]
+> **This repository has moved to [`schubergphilis-ep/terraform-azure-mcaf-container-group`](https://github.com/schubergphilis-ep/terraform-azure-mcaf-container-group).**
+> Please update your references and use the new location for issues, PRs, and contributions.
+<!-- migrate-repo:banner -->
+
 # terraform-azure-mcaf-container-group
 Terraform module to generate a container group
 
